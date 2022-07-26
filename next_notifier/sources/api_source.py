@@ -7,7 +7,7 @@ class APISource(NotificationSource):
         self._notifications = []
         self._unread = self.fetch()
 
-    def fetch(self) -> None:
+    def fetch(self) -> bool:
         headers = {
             "X-Auth-Token": os.environ["CHAT_TOKEN"],
             "X-User-Id": os.environ["CHAT_USER_ID"]

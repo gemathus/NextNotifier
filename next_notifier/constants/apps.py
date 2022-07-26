@@ -23,6 +23,10 @@ APPS = {
         "name": "chat",
         "color": "blue"
     },
+    "com.tinyspeck.slackmacgap": {
+        "name": "slack",
+        "color": "purple"
+    },
     "com.expressvpn.expressvpn": "expressvpn",
     "net.tunnelblick.tunnelblick": "tunnelblick",
     "com.getdropbox.dropbox": "dropbox",

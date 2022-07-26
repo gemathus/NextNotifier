@@ -1,6 +1,8 @@
 while true
 do
-/Users/gemathus/code/NextNotifier/.venv/bin/python3 /Users/gemathus/code/NextNotifier/next_notifier/main.py >/Users/gemathus/code/NextNotifier/stdout.log 2>/Users/gemathus/code/NextNotifier/stderr.log
-echo "Ran..."
-sleep 5
+    echo "Fetching new notifications..."
+    /Users/gemathus/code/NextNotifier/.venv/bin/python3 /Users/gemathus/code/NextNotifier/next_notifier/main.py 
+    # >/Users/gemathus/code/NextNotifier/stdout.log 2>/Users/gemathus/code/NextNotifier/stderr.log
+    echo "Finished..."
+    sleep 5
 done

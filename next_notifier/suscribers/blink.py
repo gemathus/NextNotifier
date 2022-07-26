@@ -7,6 +7,8 @@ class Blink:
         self.blink1 = Blink1()
         self.free_ports = [1,2]
         self.port_state = {1: "", 2: ""}
+        self.set_port_state(1, "")
+        self.set_port_state(2, "")
 
         #check if state.bl file exists
         if os.path.exists('state.bl'):
@@ -20,14 +22,14 @@ class Blink:
                     self.blink1.fade_to_color(0,self.port_state[2],2)
                 f.close()
         else:
-            self.blink1.off()
+            self.shutdown()
             
     def shutdown(self):
         self.blink1.off()
 
     def turn_off(self, led):
         self.blink1.fade_to_color(0, 'black', led)
-        self.port_state[led] = ""
+        self.set_port_state(led, "")
     
     def turn_on(self, led, color):
         if led == 0:
@@ -44,6 +46,7 @@ class Blink:
             self.set_port_state(led, color)
 
     def notify(self, app_names):
+        print("[blink] Got: {}".format(app_names))
         for app_name in app_names:
             if app_name not in APPS.keys():
                 print("returning")
@@ -52,8 +55,10 @@ class Blink:
 
         app_colors = [APPS[app]["color"] for app in app_names]
         if self.port_state[1] != "" and self.port_state[1] not in app_colors:
+            print("line 56")
             self.turn_off(1)
         if self.port_state[2] != "" and self.port_state[2] not in app_colors:
+            print("line 59")
             self.turn_off(2)
         
         if len(app_names) > 2:

@@ -23,8 +23,8 @@ class LocalSource(NotificationSource):
             Notification(notif[0]) for notif in cur.execute(sql) 
         ]
         con.close()
-        
-        print("Local Notifications: {}".format(self._notifications))
+        for n in self._notifications:
+            print("-> {}".format(n.app_identifier))
         return len(self._notifications) > 0
         
     @property
